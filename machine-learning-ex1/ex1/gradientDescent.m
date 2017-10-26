@@ -34,10 +34,8 @@ for iter = 1:num_iters
       end
       theta(j) = theta(j) - (alpha * (temp / m));
     end
-    %disp(theta)
     % Save the cost J in every iteration    
     J_history(iter) = computeCost(X, y, theta);
-    %disp(J_history(iter))
 
 end
 

@@ -17,7 +17,7 @@ m = length(X);
 
 for i = 1:m;
 	J += (hx(i) - y(i)) ^ 2;
-endfor
+end
 J = J / (2 * m);
 
 
