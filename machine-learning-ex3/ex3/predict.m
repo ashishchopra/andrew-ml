@@ -7,6 +7,9 @@ function p = predict(Theta1, Theta2, X)
 m = size(X, 1);
 num_labels = size(Theta2, 1);
 
+% Add ones to the X data matrix
+X = [ones(m, 1) X];
+
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
 
@@ -21,7 +24,17 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+A1 = 1 ./ (1 + (e .^ -(X * transpose(Theta1))));
 
+% Add ones to the X data matrix
+A1 = [ones(m, 1) A1];
+
+HX = 1 ./ (1 + (e .^ -(A1 * transpose(Theta2))));
+
+for i = 1:length(HX)
+	[x, ix] = max(HX(i, :));
+	p(i) = ix;
+end
 
 
 

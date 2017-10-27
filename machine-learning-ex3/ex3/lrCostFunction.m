@@ -35,7 +35,28 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+hx = 1 ./ (1 + (e .^ -(X * theta)));
+J = (sum(-y .* log(hx) - (1 - y) .* log(1 - hx)) / m);
 
+regularization_component = 0;
+for i = 2:length(theta)
+	regularization_component += theta(i) ^ 2;
+end
+regularization_component = (lambda / (2 * m)) * regularization_component;
+
+J = J + regularization_component;
+
+for i = 1:length(theta)
+	temp = 0;
+	for k = 1:m
+		temp += (hx(k) - y(k)) * X(k, i);
+	end
+	if i > 1
+		grad(i) = (temp / m) + (lambda / m) * theta(i);
+	else
+		grad(i) = (temp / m);
+	end
+end
 
 
 

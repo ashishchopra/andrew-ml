@@ -30,10 +30,12 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+HX = 1 ./ (1 + (e .^ -(X * transpose(all_theta))));
 
-
-
-
+for i = 1:length(HX)
+	[x, ix] = max(HX(i, :));
+	p(i) = ix;
+end
 
 
 % =========================================================================

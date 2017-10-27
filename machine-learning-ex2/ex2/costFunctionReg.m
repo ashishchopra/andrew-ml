@@ -35,7 +35,7 @@ for i = 1:length(theta)
 	if i > 1
 		grad(i) = (temp / m) + (lambda / m) * theta(i);
 	else
-		grad(i) = (temp / m)
+		grad(i) = (temp / m);
 	end
 end
 
