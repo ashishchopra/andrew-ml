@@ -29,10 +29,10 @@ A1 = 1 ./ (1 + (e .^ -(X * transpose(Theta1))));
 % Add ones to the X data matrix
 A1 = [ones(m, 1) A1];
 
-HX = 1 ./ (1 + (e .^ -(A1 * transpose(Theta2))));
+hx = 1 ./ (1 + (e .^ -(A1 * transpose(Theta2))));
 
-for i = 1:length(HX)
-	[x, ix] = max(HX(i, :));
+for i = 1:length(hx)
+	[x, ix] = max(hx(i, :));
 	p(i) = ix;
 end
 
